@@ -24,7 +24,7 @@ public class UsuarioModel {
     private String nome;
 
     @NotBlank
-    @Pattern(regexp = "(^\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}$)")
+    @Pattern(regexp = "(^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$)")
     private String CPF;
 
     @OneToOne(mappedBy = "fkUsuario", cascade = CascadeType.REMOVE)

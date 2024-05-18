@@ -33,10 +33,9 @@ public class EmprestimoModel {
     @OneToOne()
     private UsuarioModel fkUsuario;
 
-    public EmprestimoModel(LocalDate dateEntrega, LivroModel fkLivro, UsuarioModel fkUsuario, Long id) {
+    public EmprestimoModel(LocalDate dateEntrega, LivroModel fkLivro, UsuarioModel fkUsuario) {
         this.dateEntrega = dateEntrega;
         this.fkLivro = fkLivro;
         this.fkUsuario = fkUsuario;
-        this.id = id;
     }
 }

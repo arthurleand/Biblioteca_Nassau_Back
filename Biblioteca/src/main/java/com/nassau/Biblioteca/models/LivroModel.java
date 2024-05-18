@@ -28,10 +28,9 @@ public class LivroModel {
     @OneToOne(mappedBy = "fkLivro", cascade = CascadeType.REMOVE)
     private EmprestimoModel emprestimoModel;
 
-    public LivroModel(String descricao, EmprestimoModel emprestimoModel, String foto, Long id, String nome) {
+    public LivroModel(String descricao, EmprestimoModel emprestimoModel, String foto, String nome) {
         this.descricao = descricao;
         this.emprestimoModel = emprestimoModel;
-        this.id = id;
         this.nome = nome;
         if (foto == null){
             this.foto = "https://imgur.com/a/ZSudKdo";
