@@ -5,6 +5,8 @@ import com.nassau.Biblioteca.repositories.EmprestimoRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,13 +19,13 @@ public class EmprestimoController {
     private EmprestimoRepository emprestimoRepository;
 
     @GetMapping
-    public List<EmprestimoModel> listar(){
-        return emprestimoRepository.findAll();
+    public ResponseEntity<List<EmprestimoModel>> listar(){
+        return ResponseEntity.ok(emprestimoRepository.findAll());
     }
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody @Valid EmprestimoModel emprestimoModel){
-        emprestimoRepository.save(emprestimoModel);
+    public ResponseEntity<EmprestimoModel> cadastrar(@RequestBody @Valid EmprestimoModel emprestimoModel){
+        return ResponseEntity.status(HttpStatus.CREATED).body(emprestimoRepository.save(emprestimoModel));
     }
 }

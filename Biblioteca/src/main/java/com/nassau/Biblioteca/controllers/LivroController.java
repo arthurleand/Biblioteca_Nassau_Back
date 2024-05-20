@@ -5,6 +5,8 @@ import com.nassau.Biblioteca.repositories.LivroRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,13 +19,13 @@ public class LivroController {
     private LivroRepository livroRepository;
 
     @GetMapping
-    public List<LivroModel> listar(){
-        return livroRepository.findAll();
+    public ResponseEntity<List<LivroModel>> listar(){
+        return ResponseEntity.ok(livroRepository.findAll());
     }
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody @Valid LivroModel livroModel){
-        livroRepository.save(livroModel);
+    public ResponseEntity<LivroModel> cadastrar(@RequestBody @Valid LivroModel livroModel){
+        return ResponseEntity.status(HttpStatus.CREATED).body(livroRepository.save(livroModel));
     }
 }
