@@ -1,6 +1,6 @@
 package com.nassau.Biblioteca.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -31,5 +31,6 @@ public class UsuarioModel {
     private String cpf;
 
     @OneToMany(mappedBy = "fkUsuario", cascade = CascadeType.REMOVE)
+    @JsonIgnore
     private List<EmprestimoModel> emprestimoModel;
 }

@@ -1,7 +1,7 @@
 package com.nassau.Biblioteca.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -39,5 +39,6 @@ public class LivroModel {
     private LocalDate anoPublicacao;
 
     @OneToMany(mappedBy = "fkLivro", cascade = CascadeType.REMOVE)
+    @JsonIgnore
     private List<EmprestimoModel> emprestimoModel;
 }

@@ -1,9 +1,7 @@
 package com.nassau.Biblioteca.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,11 +32,9 @@ public class EmprestimoModel {
 
     @NotNull
     @ManyToOne
-    @JsonIgnoreProperties("emprestimoModel")
     private LivroModel fkLivro;
 
     @NotNull
     @ManyToOne
-    @JsonIgnoreProperties("emprestimoModel")
     private UsuarioModel fkUsuario;
 }
